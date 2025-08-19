@@ -6,14 +6,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
-
-@Mapper(componentModel =  "spring")
+@Mapper(componentModel = "spring")
 public interface TarefaMapper {
-
 
     TarefaMapper INSTANCE = Mappers.getMapper(TarefaMapper.class);
 
-
-
-    List<TarefaResponseDTO> toResponseDTOlList(List<Tarefa> tarefa);
+    List<TarefaResponseDTO> toResponseDTOList(List<Tarefa> tarefa);
 }
