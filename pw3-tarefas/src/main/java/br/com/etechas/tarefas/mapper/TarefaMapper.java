@@ -1,5 +1,6 @@
 package br.com.etechas.tarefas.mapper;
 
+import br.com.etechas.tarefas.dto.TarefaCreateDTO;
 import br.com.etechas.tarefas.dto.TarefaResponseDTO;
 import br.com.etechas.tarefas.entity.Tarefa;
 import org.mapstruct.Mapper;
