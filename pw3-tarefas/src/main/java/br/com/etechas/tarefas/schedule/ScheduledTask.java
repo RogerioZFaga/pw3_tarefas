@@ -2,7 +2,7 @@ package br.com.etechas.tarefas.schedule;
 
 import br.com.etechas.tarefas.entity.Tarefa;
 import br.com.etechas.tarefas.enums.StatusEnum;
-import br.com.etechas.tarefas.repositories.TarefaRepository;
+import br.com.etechas.tarefas.repository.TarefaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.Random;
 public class ScheduledTask {
 
     @Autowired
-    private TarefaRepository taskRepository;
+    private TarefaRepository tarefaRepository;
 
     private static final String[] TASK_TITLES = {
         "Revisar código",
@@ -63,15 +63,15 @@ public class ScheduledTask {
         // Define data de vencimento para a partir de hoje
         task.setDataLimite(LocalDate.now().plusDays(1)
                                        .plusDays(random.nextInt(10)));
-
+        
         // Define status como PENDING
         task.setStatus(StatusEnum.values()[random.nextInt(3)]);
-
+        
         // Define um responsável aleatório
         task.setResponsavel(RESPONSIBLES[random.nextInt(RESPONSIBLES.length)]);
         
         // Salva a tarefa no banco
-        taskRepository.save(task);
+        tarefaRepository.save(task);
         
         System.out.println("Tarefa automática criada: " + task.getTitulo() +
                           " - Responsável: " + task.getResponsavel() +

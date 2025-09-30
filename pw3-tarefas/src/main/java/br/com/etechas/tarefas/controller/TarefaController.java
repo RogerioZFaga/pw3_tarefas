@@ -30,6 +30,4 @@ public class TarefaController {
         }
         return ResponseEntity.notFound().build();
     }
-
-    public ResponseEntity<Void> criar(@PathVariable)
 }

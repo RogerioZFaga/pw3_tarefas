@@ -1,6 +1,5 @@
 package br.com.etechas.tarefas.service;
 
-import br.com.etechas.tarefas.dto.TarefaCreateDTO;
 import br.com.etechas.tarefas.dto.TarefaResponseDTO;
 import br.com.etechas.tarefas.entity.Tarefa;
 import br.com.etechas.tarefas.enums.StatusEnum;
@@ -9,7 +8,6 @@ import br.com.etechas.tarefas.repository.TarefaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -36,19 +34,5 @@ public class TarefaService {
             return true;
         }
         throw new RuntimeException("Tarefa em progresso ou concluída");
-    }
-
-
-        public TarefaService(TarefaRepository repository) {
-            this.repository = repository;
-        }
-
-        public Tarefa criar(TarefaCreateDTO dto) {
-            if (dto.dataLimite().isBefore(LocalDate.now())) {
-                throw new IllegalArgumentException("A data limite não pode ser anterior à data atual.");
-            }
-
-            return repository.save(tarefa);
-        }
     }
 }
